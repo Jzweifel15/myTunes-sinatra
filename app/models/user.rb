@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base[5.2]
+class User < ActiveRecord::Base
     has_many :playlists
     has_many :songs, through: :playlists
     has_secure_password

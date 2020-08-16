@@ -1,4 +1,4 @@
-class Playlist < ActiveRecord::Base[5.2]
+class Playlist < ActiveRecord::Base
     has_many :songs
     belongs_to :user
 end
