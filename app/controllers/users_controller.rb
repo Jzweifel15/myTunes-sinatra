@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id 
-            redirect '/index'
+            redirect 'playlists/index'
         else
             redirect '/signin'
         end
@@ -19,8 +19,18 @@ class UsersController < ApplicationController
         erb :'/users/signup'
     end
 
-    get '/index' do 
+    post '/signup' do 
+        user = User.create(email: params[:email], username: params[:username], password: params[:password])
 
+        if user.save
+            session[:user_id] = user.id
+            redirect 'playlists/index'
+        end
+    end
+
+    get '/logout' do 
+        session.clear
+        redirect '/signin'
     end
 
     helpers do 

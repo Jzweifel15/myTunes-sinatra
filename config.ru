@@ -6,5 +6,6 @@ require './config/environment'
 
 use Rack::MethodOverride
 
+use playlistController
 use UsersController
 run ApplicationController 
