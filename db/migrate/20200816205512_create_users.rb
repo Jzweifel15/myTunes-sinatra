@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :username
       t.string :email
       t.string :password_disgest
+      t.integer :playlist_id
     end
   end
 
