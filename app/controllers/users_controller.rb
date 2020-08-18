@@ -15,6 +15,10 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/signup' do 
+        erb :'/users/signup'
+    end
+
     get '/index' do 
 
     end
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
         def current_user
             User.find(session[:user_id])
         end
-        
+
     end
 
 end
