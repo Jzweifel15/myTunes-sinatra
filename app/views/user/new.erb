@@ -1,0 +1,14 @@
+<h1>Create New Playlist</h1>
+<form action="/index" method="POST">
+    <h3>Playlist Name</h3>
+    <input type="text" id="playlist-name" name="name" placeholder="Playlist Name" />
+    <h3>Add Songs</h3>
+    <% @songs.each do |song| %>
+        <input type="checkbox" id="songs-list" value="<%= song.name %>" />
+        <label><%= song.name %></label><br />
+    <% end %>
+    <input type="submit" id="create-playlist btn" value="Create Playlist" />
+</form>
+<button class="cancel btn">
+    <a href="/index">Cancel</a>
+</button>
