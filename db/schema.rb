@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_08_18_175742) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.integer "playlist_id"
   end
 
 end

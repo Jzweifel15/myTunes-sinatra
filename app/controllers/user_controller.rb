@@ -1,7 +1,13 @@
 class UserController < ApplicationController
 
     get '/index' do
-        erb :'/user/index'
+        @playlists = Playlist.all
+        erb :'user/index'
+    end
+
+    get '/logout' do 
+        session.clear
+        redirect '/signin'
     end
 
 end

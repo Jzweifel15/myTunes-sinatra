@@ -1,1 +1,18 @@
 <h2>Welcome to Your Home Page</h2>
+
+<% if @playlists.empty? %>
+    <p>It appears you do not have any playlists</p>
+    <p>Get started by creating a new playlist</p>
+<% else %>
+    <% @playlists.each do |playlist| %>
+        <p><%= playlist.name %></p>
+    <% end %>
+<% end %>
+
+<button>
+    
+</button>
+
+<button class="btn">
+    <a href="/logout">Logout</a>
+</button>
