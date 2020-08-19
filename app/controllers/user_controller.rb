@@ -5,6 +5,11 @@ class UserController < ApplicationController
         erb :'/user/index'
     end
 
+    post '/index' do 
+        Playlist.create(params[:name], params[:song_id])
+        redirect '/index'
+    end
+
     get '/new' do 
         @songs = Song.all
         erb :'/user/new'
