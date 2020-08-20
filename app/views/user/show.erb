@@ -3,7 +3,7 @@
 <h3>Songs</h3>
 <ol>
     <% @playlist_songs.each do |song| %>
-        <li><%= song.name %></li>
+        <li><%= song.name %> - Artist: <%= song.artist %> (<%= song.genre %>)</li>
     <% end %>
 </ol>
 <button>

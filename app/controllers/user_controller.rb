@@ -1,7 +1,14 @@
 class UserController < ApplicationController
 
     get '/index' do
-        @playlists = Playlist.all
+        @user = User.find(session[:user_id])
+        @user_playlists = []
+        Playlist.all.each do |playlist|
+            if playlist.user_id == @user.id 
+                @user_playlists.push(playlist)
+            end
+        end
+
         erb :'/user/index'
     end
 
@@ -12,7 +19,7 @@ class UserController < ApplicationController
 
     post '/index' do 
         #Playlist.create(params[:name], params[:song_id])
-        user = User.find_by("id")
+        user = User.find(session[:user_id])
         songs = []
         params[:song_id].each do |id|
             songs.push(id)
@@ -36,7 +43,7 @@ class UserController < ApplicationController
     end
 
     get '/index/:id/edit' do
-        @playlist = Playlist.find_by("id") 
+        @playlist = Playlist.find_by(id: params[:id]) 
         @all_songs = Song.all
         @playlist_songs = []
 
@@ -51,8 +58,8 @@ class UserController < ApplicationController
     end
 
     patch '/index/:id' do 
-        @playlist = Playlist.find_by("id")
-        user = User.find_by("id")
+        @playlist = Playlist.find_by(id: params[:id])
+        user = User.find(session[:user_id])
         songs = []
         params[:song_id].each do |id|
             songs.push(id)

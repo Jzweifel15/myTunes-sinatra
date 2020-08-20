@@ -1,11 +1,11 @@
-<h2>Welcome to Your Home Page</h2>
+<h2><%= @user.username %> Playlists</h2>
 
-<% if @playlists.empty? %>
+<% if @user_playlists.empty? %>
     <p>It appears you do not have any playlists</p>
     <p>Get started by creating a new playlist</p>
 <% else %>
     <ul>
-    <% @playlists.each do |playlist| %>
+    <% @user_playlists.each do |playlist| %>
         <li><a href="/index/<%= playlist.id %>"><%= playlist.name %></a></li>
     <% end %>
     </ul>
