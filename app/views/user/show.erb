@@ -1,15 +1,17 @@
-<button><a href="/index">Back to Home</a></button>
-<h1><%= @playlist.name %></h1>
-<h3>Songs</h3>
-<ol>
-    <% @playlist_songs.each do |song| %>
-        <li><%= song.name %> - Artist: <%= song.artist %> (<%= song.genre %>)</li>
-    <% end %>
-</ol>
-<button>
-    <a href="/index/<%= @playlist.id %>/edit">Edit Playlist</a>
-</button>
-<form action="/index/<%= @playlist.id %>" method="POST">
-    <input type="hidden" id="hidden" name="_method" value="DELETE" />
-    <input type="submit" id="delete-btn" value="Delete Playlist" />
-</form>
+<div class="show-container">
+    <button class="back btn"><a href="/index">Back to Home</a></button>
+    <h1><%= @playlist.name %></h1>
+    <h3>Songs</h3>
+    <ol>
+        <% @playlist_songs.each do |song| %>
+            <li><%= song.name %> - Artist: <%= song.artist %> (<%= song.genre %>)</li>
+        <% end %>
+    </ol>
+    <button class="edit btn">
+        <a href="/index/<%= @playlist.id %>/edit">Edit Playlist</a>
+    </button>
+    <form action="/index/<%= @playlist.id %>" method="POST">
+        <input type="hidden" id="hidden" name="_method" value="DELETE" />
+        <input type="submit" id="delete-btn" value="Delete Playlist" />
+    </form>
+</div>

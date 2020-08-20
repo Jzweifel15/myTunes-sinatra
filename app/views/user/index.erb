@@ -1,24 +1,25 @@
-<% if Helper.is_logged_in?(session) %>
-    <h2><%= @user.username %> Playlists</h2>
-    <% if @user_playlists.empty? %>
-        <p>It appears you do not have any playlists</p>
-        <p>Get started by creating a new playlist</p>
-    <% else %>
-        <ol>
-        <% @user_playlists.each do |playlist| %>
-            <li><a href="/index/<%= playlist.id %>"><%= playlist.name %></a></li>
+<div class="index-container">
+    <% if Helper.is_logged_in?(session) %>
+        <h2><%= @user.username %> Playlists</h2>
+        <% if @user_playlists.empty? %>
+            <p>It appears you do not have any playlists</p>
+            <p>Get started by creating a new playlist</p>
+        <% else %>
+            <ol>
+            <% @user_playlists.each do |playlist| %>
+                <li><a href="/index/<%= playlist.id %>"><%= playlist.name %></a></li>
+            <% end %>
+            </ol>
         <% end %>
-        </ol>
+    <% else %>
+        <h1>404</h1>
+        <h3>Woah! Something happened, but not sure what...</h3>
+        <p>Try <a href="/signin">Signing In</a> or <a href="/signup">Signing Up</a> to continue.</p>
     <% end %>
-<% else %>
-    <h1>404</h1>
-    <h3>Woah! Something happened, but not sure what...</h3>
-    <p>Try <a href="/signin">Signing In</a> or <a href="/signup">Signing Up</a> to continue.</p>
-<% end %>
-<button class="create-playlist btn">
-    <a href="/new">Create New Playlist</a>
-</button>
-
-<button class="logout btn">
-    <a href="/logout">Logout</a>
-</button>
+    <button class="create-playlist btn">
+        <a href="/new">Create New Playlist</a>
+    </button>
+    <button class="logout btn">
+        <a href="/logout">Logout</a>
+    </button>
+</div>
