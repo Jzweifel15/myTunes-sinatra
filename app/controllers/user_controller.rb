@@ -21,6 +21,21 @@ class UserController < ApplicationController
         erb :'/user/new'
     end
 
+    get '/show/:id' do
+        @playlist = Playlist.find_by("id")
+        @songs = []
+
+        @playlist.song_id.split(/\W/).each do |id|
+            if id != ""
+                @songs.push(id.to_i)
+            end
+        end
+
+        binding.pry
+
+        erb :'/user/show'
+    end
+
     get '/logout' do 
         session.clear
         redirect '/signin'
