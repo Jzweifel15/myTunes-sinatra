@@ -6,7 +6,7 @@
 <% else %>
     <ol>
     <% @playlists.each do |playlist| %>
-        <li><a href="/show/<%= playlist.id %>"><%= playlist.name %></a></li>
+        <li><a href="/index/<%= playlist.id %>"><%= playlist.name %></a></li>
     <% end %>
     </ol>
 <% end %>

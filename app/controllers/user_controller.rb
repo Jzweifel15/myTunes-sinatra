@@ -21,19 +21,25 @@ class UserController < ApplicationController
         erb :'/user/new'
     end
 
-    get '/show/:id' do
+    get '/index/:id' do
         @playlist = Playlist.find_by("id")
         @songs = []
 
         @playlist.song_id.split(/\W/).each do |id|
             if id != ""
-                @songs.push(id.to_i)
+                song = Song.find_by(id: id)
+                @songs.push(song)
             end
         end
 
-        binding.pry
-
         erb :'/user/show'
+    end
+
+    delete '/index/:id' do 
+        playlist = Playlist.find_by("id")
+        playlist.destroy
+
+        redirect '/index'
     end
 
     get '/logout' do 
