@@ -35,6 +35,33 @@ class UserController < ApplicationController
         erb :'/user/show'
     end
 
+    get '/index/:id/edit' do
+        @playlist = Playlist.find_by("id") 
+        @all_songs = Song.all
+        @playlist_songs = []
+
+        @playlist.song_id.split(/\W/).each do |id|
+            if id != ""
+                song = Song.find_by(id: id)
+                @playlist_songs.push(song)
+            end
+        end
+
+        erb :'/user/edit'
+    end
+
+    patch '/index/:id' do 
+        @playlist = Playlist.find_by("id")
+        user = User.find_by("id")
+        songs = []
+        params[:song_id].each do |id|
+            songs.push(id)
+        end
+        @playlist.update(name: params[:name], user_id: user.id, song_id: songs)
+
+        redirect '/index/:id'
+    end
+
     delete '/index/:id' do 
         playlist = Playlist.find_by("id")
         playlist.destroy

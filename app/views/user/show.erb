@@ -6,7 +6,7 @@
     <% end %>
 </ol>
 <button>
-    <a href="">Edit Playlist</a>
+    <a href="/index/<%= @playlist.id %>/edit">Edit Playlist</a>
 </button>
 <form action="/index/<%= @playlist.id %>" method="POST">
     <input type="hidden" id="hidden" name="_method" value="DELETE" />

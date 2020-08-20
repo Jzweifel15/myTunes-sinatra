@@ -1,0 +1,12 @@
+<h1>Edit <%= @playlist.name %></h1>
+<form action="/index/<%= @playlist.id %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH" />
+    <h3>Playlist Name</h3>
+    <input type="text" id="playlist-name" name="name" value="<%= @playlist.name %>" />
+    <h3>Add Songs</h3>
+    <% @all_songs.each do |song| %>
+        <input type="checkbox" name="song_id[]" value="<%= song.id %>" />
+        <label><%= song.name %> - Artist: <%= song.artist %> (<%= song.genre %>)</label><br />
+    <% end %>
+    <input type="submit" id="create-playlist btn" value="Update Playlist" />
+</form>
