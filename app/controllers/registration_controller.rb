@@ -11,7 +11,7 @@ class RegistrationController < ApplicationController
             session[:user_id] = @user.id 
             redirect '/index'
         else
-            redirect '/signin'
+            erb :'/user/error'
         end
     end
 
@@ -21,8 +21,7 @@ class RegistrationController < ApplicationController
 
     post '/signup' do 
         if params[:email].empty? || params[:username].empty? || params[:password].empty?
-            @error = "All fields must be filled in before proceeding."
-            erb :'/registration/signup'
+            redirect '/signup'
         else
             @user = User.create(params)
             session[:user_id] = @user.id
