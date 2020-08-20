@@ -1,7 +1,8 @@
+<button><a href="/index">Back to Home</a></button>
 <h1><%= @playlist.name %></h1>
 <h3>Songs</h3>
 <ol>
-    <% @songs.each do |song| %>
+    <% @playlist_songs.each do |song| %>
         <li><%= song.name %></li>
     <% end %>
 </ol>

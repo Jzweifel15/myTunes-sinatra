@@ -4,11 +4,11 @@
     <p>It appears you do not have any playlists</p>
     <p>Get started by creating a new playlist</p>
 <% else %>
-    <ol>
+    <ul>
     <% @playlists.each do |playlist| %>
         <li><a href="/index/<%= playlist.id %>"><%= playlist.name %></a></li>
     <% end %>
-    </ol>
+    </ul>
 <% end %>
 
 <button class="create-playlist btn">

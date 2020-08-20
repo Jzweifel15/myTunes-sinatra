@@ -5,6 +5,11 @@ class UserController < ApplicationController
         erb :'/user/index'
     end
 
+    get '/new' do 
+        @songs = Song.all
+        erb :'/user/new'
+    end
+
     post '/index' do 
         #Playlist.create(params[:name], params[:song_id])
         user = User.find_by("id")
@@ -16,19 +21,14 @@ class UserController < ApplicationController
         redirect '/index'
     end
 
-    get '/new' do 
-        @songs = Song.all
-        erb :'/user/new'
-    end
-
     get '/index/:id' do
-        @playlist = Playlist.find_by("id")
-        @songs = []
+        @playlist = Playlist.find_by(id: params[:id])
+        @playlist_songs = []
 
         @playlist.song_id.split(/\W/).each do |id|
             if id != ""
                 song = Song.find_by(id: id)
-                @songs.push(song)
+                @playlist_songs.push(song)
             end
         end
 
@@ -59,11 +59,11 @@ class UserController < ApplicationController
         end
         @playlist.update(name: params[:name], user_id: user.id, song_id: songs)
 
-        redirect '/index/:id'
+        redirect '/index'
     end
 
     delete '/index/:id' do 
-        playlist = Playlist.find_by("id")
+        playlist = Playlist.find_by(id: params[:id])
         playlist.destroy
 
         redirect '/index'
