@@ -165,12 +165,14 @@ a {
   color: #fff;
 }
 
-.new-container .cancel {
+.new-container .cancel, 
+.edit-container .cancel {
   width: 15vw;
   transform: translateX(3vw);
 }
 
-.new-container a:hover {
+.new-container a:hover
+.edit-container a:hover {
   color: #fff;
 }
 
