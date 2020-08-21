@@ -1,7 +1,16 @@
 # MyTunes-Sinatra
 MyTunes is a small playlist creator MVC web-application using the Sinatra library. This app utilizes RESTful route naming patterns and ActiveRecord for making CRUD (Create, Read, Update, Destroy) actions to a database. 
 
-## Usage
+### Installation
+Fork and Clone the repository to get started tweaking and working on your own version of MyTunes!
+
+### Models
+Three models were created in `app/models`. One for a `User`, one for a `Playlist`, and one for a `Song`.
+
+### Migrations
+Overall, there were three migrations total. One migration that created a table for each model.
+
+### Associations
 ```ruby
 class User < ActiveRecord::Base # The User model is anyone who signs up
     has_many :playlists     # A user can have as many playlists as they choose to create
@@ -21,8 +30,14 @@ class Song < ActiveRecord::Base # The Song model that sets up different song obj
 end
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+### Seeds
+A seeds file was utilized to create 'dummy' data for songs. This data is stored in the database and is listed to allow a user to choose from to create their playlist.
+
+### User Authentication
+A User can sign in or sign up using a secure password that is encrypted and salted from the Bcrypt Gem. When a user signs in/up their playlists are pulled from the database using primary and foreign keys to associate a User's playlists. 
+
+### CRUD Actions 
+A User can Create as many playlists as they want; can see/Read all their playlists on their homepage; can see/Read all the songs associated to a particular playlist; can Update a playlist by changing the name or adding new songs; or, Destroy/Delete a playlist completely, if the User chooses to. 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
