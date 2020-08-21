@@ -230,3 +230,18 @@ a {
 .show-container a:hover {
   color: #fff;
 }
+
+/* Error Page */
+.error-container {
+  margin-left: 2vw;
+}
+
+.error-container h1 {
+  color: #4d4dff;;
+  font-size: 3rem;
+  margin-bottom: 1vh;
+}
+
+.error-container a:hover {
+  color: #4d4dff;
+}
