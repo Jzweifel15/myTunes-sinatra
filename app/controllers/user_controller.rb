@@ -50,7 +50,7 @@ class UserController < ApplicationController
         @playlist.song_id.split(/\W/).each do |id|
             if id != ""
                 song = Song.find_by(id: id)
-                @playlist_songs.push(song)
+                @playlist_songs.push(song.id)
             end
         end
 
