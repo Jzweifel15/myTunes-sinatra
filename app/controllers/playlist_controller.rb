@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class PlaylistController < ApplicationController
 
     get '/index' do
         @user = User.find(session[:user_id])
@@ -9,12 +9,12 @@ class UserController < ApplicationController
             end
         end
 
-        erb :'/user/index'
+        erb :'/playlist/index'
     end
 
     get '/new' do 
         @songs = Song.all
-        erb :'/user/new'
+        erb :'/playlist/new'
     end
 
     post '/index' do 
@@ -39,7 +39,7 @@ class UserController < ApplicationController
             end
         end
 
-        erb :'/user/show'
+        erb :'/playlist/show'
     end
 
     get '/index/:id/edit' do
@@ -54,7 +54,7 @@ class UserController < ApplicationController
             end
         end
 
-        erb :'/user/edit'
+        erb :'/playlist/edit'
     end
 
     patch '/index/:id' do 

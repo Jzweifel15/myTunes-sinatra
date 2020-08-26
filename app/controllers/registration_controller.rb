@@ -11,7 +11,7 @@ class RegistrationController < ApplicationController
             session[:user_id] = @user.id 
             redirect '/index'
         else
-            erb :'/user/error'
+            erb :'/playlist/error'
         end
     end
 
