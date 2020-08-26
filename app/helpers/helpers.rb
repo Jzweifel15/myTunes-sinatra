@@ -4,4 +4,7 @@ class Helper
         !!session_hash[:user_id]
       end
 
+      def self.current_user(session_hash)
+        @current_user = User.find(session_hash[:user_id])
+      end
 end
